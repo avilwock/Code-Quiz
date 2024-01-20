@@ -1,0 +1,51 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.game {
+    border: 10px solid;
+    margin: 10px auto;
+    width: 800px;
+    padding: 10px;
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    align-content: center;
+    bottom: 10px;
+}
+
+#quiz {
+    display: flex;
+    flex-flow: row wrap;
+    flex-wrap: wrap;
+    border: 1px solid white;
+    border-radius: 25px;
+    width: 500px;
+    height: 200px;
+    align-content: bottom;
+}
+
+#submit {
+    box-shadow: 1px 5px 5px yellow;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    justify-content: center;
+}
+
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid white;
+    border-radius: 25px;
+    width: 200px;
+    height: 200px;
+}
