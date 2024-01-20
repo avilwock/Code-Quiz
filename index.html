@@ -7,14 +7,19 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Javascript Quiz</h1>
-    <div class = game>
-        <div id="quiz">
-         <button id="submit">Submit Answer</button>
+    <header id = "timer">
+        <h1>JavaScript Quiz Challenge</h1>
+    </header>
+
+    <section id = "start-quiz">
+        <p>You have 30 seconds to answer 5 questions about JavaScript.
+            If you answer a question incorrectly, 5 seconds will be
+            subtracted from the timer for each error.
+        </p>
+        <div class ="controls">
+            <button id-="start-btn" class ="start-btn">Start Quiz</button> 
         </div>
-        <div id="results"></div>
-    </div>
-</header>
+    </section>
+        <script src="./assets/js/script.js"></script>
 </body>
 </html>
