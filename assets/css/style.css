@@ -1,15 +1,55 @@
 *
 {
     margin: 0px;
-    padding: 0px;
+    padding: 25px;
     background-color: black;
+    box-sizing: border-box;
     color: white;
     text-align: center;
     flex-wrap: wrap;
-    align-content: center;
 }
 
-.game {
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.75;
+    width: 55;
+    margin: 0 auto;
+  }
+
+  header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 25px 0;
+  }
+
+button {
+    border: 1px solid white;
+    width: auto;
+    padding: 15px;
+    background-color: darkblue;
+    color: white;
+    margin:10px;
+    border-radius: 15%;
+}
+
+button:hover {
+    opacity: 75%;
+    border: 1px solid gray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+  .game {
     border: 10px solid;
     margin: 10px auto;
     width: 800px;

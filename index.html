@@ -7,12 +7,18 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <header id = "timer">
+    <header>
         <h1>JavaScript Quiz Challenge</h1>
+        <div class="score">
+            <a id ="highscoreslink">View High Scores</a>
+        </div>
+        <div id = "timer">
+            Time: 60
+        </div>
     </header>
 
     <section id = "start-quiz">
-        <p>You have 30 seconds to answer 5 questions about JavaScript.
+        <p>You have 60 seconds to answer 5 questions about JavaScript.
             If you answer a question incorrectly, 5 seconds will be
             subtracted from the timer for each error.
         </p>
@@ -20,6 +26,38 @@
             <button id-="start-btn" class ="start-btn">Start Quiz</button> 
         </div>
     </section>
+
+    <section id = "container">
+        <h2 id = "question">Question</h2>
+        <div id = "answers">
+            <li class = "btn">1</li>
+            <li class = "btn">2</li>
+            <li class = "btn">3</li>
+            <li class = "btn">4</li>
+        </div>
+            <h2 id = "submit-answer"></h2>
+            <div class = "controls">
+                <button id = "next-btn">Next</button>
+            </div>
+    </section>
+
+    <section id = "scorecontainer">
+        <form id ="submit-form">
+            <h3 id = "yourscore"></h3>
+            <button id = "submit-btn">Submit</button>
+        </form>
+    </section>
+
+    <section id="highscores">
+        <div id="high-scores">
+            <h3 id = "leaderboard">Leaderboard</h3>
+            <div class="controls">
+                <button id = "restart-btn">Restart</button>
+                <button id = "clear-btn">Clear Scorees</button>
+            </div>
+        </div>
+    </section>
+
         <script src="./assets/js/script.js"></script>
 </body>
 </html>
