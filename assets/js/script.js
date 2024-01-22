@@ -1,18 +1,33 @@
+
+
 const timerElement = document.getElementById('timer');
 const startButton = document.getElementById('start-quiz');
+const startContainerEl = document.getElementById('start-container');
+var submitButton = document.getElementById("submit-btn");
 
 // Initialize the timer variables
 var seconds = 60;
 var timerInterval;
 
+
+
+startButton.addEventListener('click', startCountdown);
+
+
 // Function to start the countdown
 function startCountdown() {
   // Disable the start button to prevent multiple clicks
   startButton.disabled = true;
+  startButton.style.display = 'none;'
+  
 
   // Start the timer interval
   timerInterval = setInterval(updateTimer, 1000);
+  
+
 }
+
+
 
 // Function to update the timer display
 function updateTimer() {
@@ -36,7 +51,6 @@ function padZero(number) {
 }
 
 // Add event listener to the start button
-startButton.addEventListener('click', startCountdown);
 
 
 
@@ -72,7 +86,7 @@ const questions = [
     question.options.forEach((option, optionIndex) => {
       const li = document.createElement('li');
       li.textContent = option;
-      li.classList.add('answer');
+      li.classList.add('answers');
   
       // Add an event listener to handle option selection
       li.addEventListener('click', () => {
@@ -101,3 +115,26 @@ const questions = [
   
   
   displayQuestion(0); // Display the first question
+  
+
+viewHighScores.addEventListener("click", showHighScores);
+
+submitButton.addEventListener("click", function (event) {
+  event.preventDefault()
+  var initials = document.querySelector("#initials").ariaValueMax;
+  showHighScores(initials);
+});
+
+
+
+
+
+
+
+// function activateButton() {
+//   // Disable the button
+//   document.getElementById("start-container").disabled = true;
+
+//   // Hide the button
+//   document.getElementById("start-container").style.display = "";
+// }

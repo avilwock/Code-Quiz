@@ -8,16 +8,16 @@
 </head>
 <body>
     <header>
-        <h1>JavaScript Quiz Challenge</h1>
-        <div class="score">
-            <a id ="highscoreslink">View High Scores</a>
+        <div class="highscore" id = "highscore">
+            <button id ="highscoreslink">View High Scores</button>
         </div>
         <div id = "timer">
             Time: 60
         </div>
     </header>
 
-    <section id = "start-quiz">
+    <section id = "start-quiz"  id = "start-container">
+        <h1>JavaScript Quiz Challenge</h1>
         <p>You have 60 seconds to answer 5 questions about JavaScript.
             If you answer a question incorrectly, 5 seconds will be
             subtracted from the timer for each error.
@@ -41,9 +41,11 @@
             </div>
     </section>
 
-    <section id = "scorecontainer">
+    <section id = "scorecontainer"  id = "var1">
         <form id ="submit-form">
             <h3 id = "yourscore"></h3>
+            <p>Your score: <span id = "score"></span></p>
+            <input type="text" id = "initials" placeholder = "Please enter your initials here">
             <button id = "submit-btn">Submit</button>
         </form>
     </section>
