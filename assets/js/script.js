@@ -1,9 +1,8 @@
-
-
 const timerElement = document.getElementById('timer');
 const startButton = document.getElementById('start-quiz');
 const startContainerEl = document.getElementById('start-container');
 var submitButton = document.getElementById("submit-btn");
+var gameContainer = document.getElementById("container");
 
 // Initialize the timer variables
 var seconds = 60;
@@ -11,19 +10,16 @@ var timerInterval;
 
 // Function to start the countdown
 function startCountdown() {
+  startButton.disabled = true;
+  startButton.style.display = "none";
+  gameContainer.style.display = "block";
    // Start the timer interval
   timerInterval = setInterval(updateTimer, 1000);
+  
+  displayQuestion(0); // Display the first question
 }
 
 startButton.addEventListener("click", startCountdown);
-
-function handleClick() {
-  startButton.disabled = true;
-  startButton.style.display = "none";
-
-}
-
-startButton.addEventListener("click", handleClick);
 
 // Function to update the timer display
 function updateTimer() {
@@ -37,10 +33,6 @@ function updateTimer() {
   // Update the timer display
   timerElement.textContent = "Seconds Remaining: " + remainingSeconds;
 }
-
-
-
-
 
 
 
@@ -67,8 +59,6 @@ const questions = [
       options: ["=", "*", "X", "-"],
       answer: 0 //Index of the correct option
     }
-    
-    // Add more question objects as needed
   ];
 
 
@@ -77,7 +67,7 @@ const questions = [
     const optionsElement = document.getElementById('answers');
   
     const question = questions[index];
-    questionElement.textContent = question.question;
+    questionElement.textContent = questions.question;
   
     // Clear previous options
     optionsElement.innerHTML = '';
@@ -113,23 +103,36 @@ const questions = [
     displayQuestion(questionIndex + 1);
   }
   
-  
-  displayQuestion(0); // Display the first question
-  
 
+ //
+ // 
+let currentQuestionIndex = 0;
 
-
-
-
-
-
-
-
-
-viewHighScores.addEventListener("click", showHighScores);
-
-submitButton.addEventListener("click", function (event) {
-  event.preventDefault()
-  var initials = document.querySelector("#initials").ariaValueMax;
-  showHighScores(initials);
+var nextButton = document.getElementById("next-btn");
+nextButton.addEventListener("click", function() {
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    displayQuestion();
+  } else {
+    // Handle end of questions
+    console.log("End of questions");
+  }
 });
+
+//Initial dispaly of the first question
+displayQuestion ();
+
+
+
+
+
+
+
+
+// viewHighScores.addEventListener("click", showHighScores);
+
+// submitButton.addEventListener("click", function (event) {
+//   event.preventDefault()
+//   var initials = document.querySelector("#initials").ariaValueMax;
+//   showHighScores(initials);
+// });

@@ -38,10 +38,22 @@ button:hover {
     border: 1px solid gray;
 }
 
+#container {
+    display: none;
+}
 
 
+#score-container {
+    display: none;
+}
 
+#highscores {
+    display: none;
+}
 
+#submit-form {
+    display: none;
+}
 
 
 
