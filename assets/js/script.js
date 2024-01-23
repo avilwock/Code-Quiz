@@ -9,25 +9,21 @@ var submitButton = document.getElementById("submit-btn");
 var seconds = 60;
 var timerInterval;
 
-
-
-startButton.addEventListener('click', startCountdown);
-
-
 // Function to start the countdown
 function startCountdown() {
-  // Disable the start button to prevent multiple clicks
-  startButton.disabled = true;
-  startButton.style.display = 'none;'
-  
-
-  // Start the timer interval
+   // Start the timer interval
   timerInterval = setInterval(updateTimer, 1000);
-  
+}
+
+startButton.addEventListener("click", startCountdown);
+
+function handleClick() {
+  startButton.disabled = true;
+  startButton.style.display = "none";
 
 }
 
-
+startButton.addEventListener("click", handleClick);
 
 // Function to update the timer display
 function updateTimer() {
@@ -38,19 +34,10 @@ function updateTimer() {
   // Calculate the hours, minutes, and remaining seconds
   const remainingSeconds = seconds % 60;
 
-  // Format the time values with leading zeros
-  const formattedTime = `${padZero(remainingSeconds)}`;
-
   // Update the timer display
-  timerElement.textContent = "Seconds Remaining: " + formattedTime;
+  timerElement.textContent = "Seconds Remaining: " + remainingSeconds;
 }
 
-// Function to add leading zeros to single-digit numbers
-function padZero(number) {
-  return number.toString().padStart(2, '0');
-}
-
-// Add event listener to the start button
 
 
 
@@ -59,15 +46,28 @@ function padZero(number) {
 
 const questions = [
     {
-      question: "What is the capital of France?",
-      options: ["Paris", "London", "Berlin", "Madrid"],
+      question: "How do you create a function in JavaScript?",
+      options: ["function myFunction()", "function = myFunction()", "function:myFunction()", "function = ()"],
       answer: 0 // Index of the correct option
     },
     {
-      question: "Which planet is known as the Red Planet?",
-      options: ["Mars", "Venus", "Jupiter", "Saturn"],
+      question: "How do you add a comment in JavaScript?",
+      options: ["<//This is a comment", "'This is a comment", "<!--This is a comment -->", "/*This is a comment */"],
       answer: 0 // Index of the correct option
     },
+
+    {
+      question: "How do you declare a JavaScript variable?",
+      options: ["var carName;", "variable carName", "v carName;", "New Variable: carName"],
+      answer: 0 //Index of the correct option
+    },
+
+    {
+      question: "What operator is used to assign a value to a variable?",
+      options: ["=", "*", "X", "-"],
+      answer: 0 //Index of the correct option
+    }
+    
     // Add more question objects as needed
   ];
 
@@ -117,6 +117,15 @@ const questions = [
   displayQuestion(0); // Display the first question
   
 
+
+
+
+
+
+
+
+
+
 viewHighScores.addEventListener("click", showHighScores);
 
 submitButton.addEventListener("click", function (event) {
@@ -124,17 +133,3 @@ submitButton.addEventListener("click", function (event) {
   var initials = document.querySelector("#initials").ariaValueMax;
   showHighScores(initials);
 });
-
-
-
-
-
-
-
-// function activateButton() {
-//   // Disable the button
-//   document.getElementById("start-container").disabled = true;
-
-//   // Hide the button
-//   document.getElementById("start-container").style.display = "";
-// }
