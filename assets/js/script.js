@@ -8,9 +8,12 @@ var clearStorageButton = document.getElementById("clear-btn");
 var showHighScoresButton = document.getElementById("highscores-btn");
 var highScores = document.getElementById("highscores");
 var nextButton = document.getElementById("next-btn");
+var initialsText = document.getElementById("initials");
+var scoreText = document.getElementById("yourscore");
+var scores = JSON.parse(localStorage.getItem("scores")) || [];
 
 // Initialize the timer variables
-var timeLeft = 60;
+var timeLeft = 5;
 var timerInterval;
 var shuffledQuestions;
 // Function to start the countdown
@@ -30,7 +33,10 @@ function startGame() {
   
 }
 startButton.addEventListener("click", startGame);
+nextButton.addEventListener("click",() => {
+  currentQuestionIndex++
 
+})
 
 
 // Function to update the timer display
@@ -44,13 +50,14 @@ function updateTimer() {
   timerElement.textContent = "Seconds Remaining: " + remainingSeconds;
 
   if (timeLeft <= 0) {
-    timeLeft--;
+    timeLeft = "Game Over";
     //Update the timer display
     timerElement.textContent = timeLeft
-    saveScore();
-  }
-  }
 
+    saveScore();
+
+  }
+}
 
   var questions = [
     {
@@ -104,7 +111,6 @@ function updateTimer() {
     });
   }
 
-
   function checkAnswer(questionIndex, selectedOptionIndex) {
     var question = questions[questionIndex];
   
@@ -114,6 +120,11 @@ function updateTimer() {
     } else {
       // The selected answer is incorrect
       console.log('Incorrect answer!');
+        if (timeLeft <= 10) {
+          timeLeft = 0;
+        } else {
+          timeLeft -=10;
+        }
     }
   
     // Move to the next question
@@ -123,20 +134,76 @@ function updateTimer() {
       }
   }
   
+  function saveScore() {
+    clearInterval(timerInterval);
+    timerElement.textContext = "Time: " + timeLeft;
+    setTimeout(function() {
+      gameContainer.style.display = "none";
+      startContainerEl.style.display ="none";
+      var loadScores = function () {
+    if (!saveScore) {
+      return false;
+    }
+    
+    saveScore = JSON.parse(saveScore);
+    var initialsText= document.querySelector("initials").ariaValueMax;
+    var newScore = {
+      score: timeLeft,
+      initials: initialsText = scores.initials
+    }
+  
+    saveScore.push(newScore);
+    console.log(saveScore)
+    }
+
+    saveScore.forEach(score => {
+      initialsText.innerText = score.initials
+      scoreText.innerText = score.score
+    })
 
 
-
-
-
-
+  var highScores = document.getElementById("highscores") 
+    highScores.innerHTML = "";
+    for (i = 0; i <scores.length; i++) {
+    }
+    localStorage.setItem("scores" , JSON.stringify (scores));
+    
+    })
+  };
 
   function viewHighScores() {
-  var highScores = document.getElementById("highscores-btn");
+  var highScores = document.getElementById("highscores");
   highScores.style.display = "block";
   gameContainer.style.display = "none";
   startContainerEl.style.display ="none";
-
+  restartButton.style.display = "block";
+  clearStorageButton.style.display = "block";
 }
 
-showHighScoresButton.addEventListener("click", viewHighScores)
-startButton.addEventListener("click", startGame);
+showHighScoresButton.addEventListener("click", viewHighScores);
+
+
+
+
+localStorage.setItem("scores", JSON.stringify(scores));
+
+
+
+
+
+var clearButton = document.getElementById("clear-btn");
+clearButton.addEventListener("click", function () {
+  localStorage.clear();
+})
+
+var restartButton = document.getElementById('restart-btn');
+var content = document.getElementById('content');
+
+// Store the original content
+var originalContent = content.innerHTML;
+
+// Add an event listener to the reset button
+restartButton.addEventListener('click', function() {
+  // Reset the content to its original state
+  window.location.origin;
+});

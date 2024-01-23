@@ -61,7 +61,12 @@ button:hover {
 
 #next-btn {
     display: none;
-    text-align: center;
 }
 
+#restart-btn {
+    display: none;
+}
 
+#clear-btn {
+    display: none;
+}
