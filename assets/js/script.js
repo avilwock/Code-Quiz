@@ -33,10 +33,6 @@ function startGame() {
   
 }
 startButton.addEventListener("click", startGame);
-nextButton.addEventListener("click",() => {
-  currentQuestionIndex++
-
-})
 
 
 // Function to update the timer display
@@ -49,11 +45,10 @@ function updateTimer() {
   // Update the timer display
   timerElement.textContent = "Seconds Remaining: " + remainingSeconds;
 
-  if (timeLeft <= 0) {
+  if (timeLeft <= 0 || finalQuestion) {
     timeLeft = "Game Over";
     //Update the timer display
     timerElement.textContent = timeLeft
-
     saveScore();
 
   }
@@ -131,9 +126,21 @@ function updateTimer() {
     displayQuestion(questionIndex + 1)
       if (shuffledQuestions.length> currentQuestionIndex + 1) {
         nextButton.style.display = "block";
+      } else {
+        saveScore()
       }
   }
+
+  nextButton.addEventListener("click",() => {
+    currentQuestionIndex + 1
   
+  })
+  
+  loadScores = function () {
+    if (!savedScores) {
+      return false
+    }
+  }
   function saveScore() {
     clearInterval(timerInterval);
     timerElement.textContext = "Time: " + timeLeft;
@@ -162,11 +169,14 @@ function updateTimer() {
     })
 
 
-  var highScores = document.getElementById("highscores") 
-    highScores.innerHTML = "";
+  var highScoresEl = document.getElementById("highscores") 
+    highScoresEl.innerHTML = "";
     for (i = 0; i <scores.length; i++) {
     }
     localStorage.setItem("scores" , JSON.stringify (scores));
+
+    localStorage.setItem("initials", initials);
+    localStorage.setItem("score", scores);
     
     })
   };
@@ -196,14 +206,9 @@ clearButton.addEventListener("click", function () {
   localStorage.clear();
 })
 
-var restartButton = document.getElementById('restart-btn');
-var content = document.getElementById('content');
 
-// Store the original content
-var originalContent = content.innerHTML;
-
+function resetPage() {
+  location.reload();
+}
 // Add an event listener to the reset button
-restartButton.addEventListener('click', function() {
-  // Reset the content to its original state
-  window.location.origin;
-});
+restartButton.addEventListener("click", resetPage)
