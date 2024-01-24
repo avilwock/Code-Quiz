@@ -134,7 +134,6 @@ function checkAnswer(questionIndex, selectedOptionIndex) {
     endGame();
     saveScore();
   }
-
 }
 
 
@@ -169,6 +168,8 @@ function resetPage() {
 }
 // Add an event listener to the reset button
 restartButton.addEventListener("click", resetPage)
+
+
 var score = timeLeft;
 function saveScore () {
   localStorage.setItem("scores", JSON.stringify(timeLeft));
