@@ -172,5 +172,5 @@ restartButton.addEventListener("click", resetPage)
 
 var score = timeLeft;
 function saveScore () {
-  localStorage.setItem("scores", JSON.stringify(timeLeft));
+  localStorage.setItem("scores", JSON.stringify(score));
 }
