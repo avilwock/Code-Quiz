@@ -110,3 +110,70 @@ LoadScores = function()  {
     initials: initials
   }
 }
+
+
+
+
+
+
+
+nextButton.addEventListener("click",() => {
+  currentQuestionIndex + 1
+
+})
+
+nextButton.style.display = "block";
+
+
+var nextButton = document.getElementById("next-btn");
+
+
+
+
+// function saveScore() {
+  //   clearInterval(timerInterval);
+  //   timerElement.textContext = "Time: " + timeLeft;
+  //   setTimeout(function() {
+  //     gameContainer.style.display = "none";
+  //     startContainerEl.style.display ="none";
+  //     var loadScores = function () {
+  //   if (!saveScore) {
+  //     return false;
+  //   }
+    
+  //   saveScore = JSON.parse(saveScore);
+  //   var initialsText= document.querySelector("initials").ariaValueMax;
+  //   var newScore = {
+  //     score: timeLeft,
+  //     initials: initialsText = scores.initials
+  //   }
+  
+  //   saveScore.push(newScore);
+  //   console.log(saveScore)
+  //   }
+
+  //   saveScore.forEach(score => {
+  //     initialsText.innerText = score.initials
+  //     scoreText.innerText = score.score
+  //   })
+
+
+  // var highScoresEl = document.getElementById("highscores") 
+  //   highScoresEl.innerHTML = "";
+  //   for (i = 0; i <scores.length; i++) {
+  //   }
+  //   localStorage.setItem("scores" , JSON.stringify (scores));
+
+  //   localStorage.setItem("initials", initials);
+  //   localStorage.setItem("score", scores);
+    
+  //   })
+  // };
+
+
+  
+  loadScores = function () {
+    if (!savedScores) {
+      return false
+    }
+  }
