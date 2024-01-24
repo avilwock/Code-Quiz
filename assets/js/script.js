@@ -26,7 +26,7 @@ var scoreText = document.getElementById("yourscore");
 var scores = JSON.parse(localStorage.getItem("scores")) || [];
 
 //gives timer a 60 second countdown
-var timeLeft = 20;
+var timeLeft = 60;
 //creates variable timerInterval
 var timerInterval;
 //creates a variable to shuffle questions
