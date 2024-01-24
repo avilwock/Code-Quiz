@@ -43,15 +43,11 @@ button:hover {
 }
 
 
-#score-container {
+#scorecontainer {
     display: none;
 }
 
 #highscores {
-    display: none;
-}
-
-#submit-form {
     display: none;
 }
 
@@ -70,3 +66,4 @@ button:hover {
 #clear-btn {
     display: none;
 }
+

@@ -1,19 +1,35 @@
+// calls the timer Element
 var timerElement = document.getElementById('timer');
+//calls the section that holds the quiz
 var startButton = document.getElementById('start-quiz');
+//calls the submit button
 var submitButton = document.getElementById("submit-btn");
+//calls the game container
 var gameContainer = document.getElementById("container");
+//calls the restart button
 var restartButton = document.getElementById("restart-btn");
+//calls the clear button
 var clearStorageButton = document.getElementById("clear-btn");
+//calls the highscores button
 var showHighScoresButton = document.getElementById("highscores-btn");
+//calls the highscores section
 var highScores = document.getElementById("highscores");
+// calls the high scores table
 var highScoresTable = document.getElementById("highscore");
+//calls for input of initials
 var initialsText = document.getElementById("initials");
+//calls for the generated score
+
+var scoreContainer = document.getElementById("scorecontainer");
 var scoreText = document.getElementById("yourscore");
+//parses the scores for the game
 var scores = JSON.parse(localStorage.getItem("scores")) || [];
 
-// Initialize the timer variables
-var timeLeft = 5;
+//gives timer a 60 second countdown
+var timeLeft = 20;
+//creates variable timerInterval
 var timerInterval;
+//creates a variable to shuffle questions
 var shuffledQuestions;
 // Function to start the countdown
 function startGame() {
@@ -24,7 +40,6 @@ function startGame() {
   //show the game container when the quiz begins
   gameContainer.style.display = "block";
   // Start the timer interval and update it
-
   timerInterval = setInterval(updateTimer, 1000);
   shuffledQuestions = questions.sort(() => Math.random() - .5)
   currentQuestionIndex = 0;
@@ -49,7 +64,8 @@ function updateTimer() {
     timeLeft = "Game Over";
     //Update the timer display
     timerElement.textContent = timeLeft
-    endGame();   
+    endGame();
+    viewScore();
   }
   
 }
@@ -57,6 +73,7 @@ function updateTimer() {
 function endGame() {
   gameContainer.remove();
   clearInterval(timerInterval);
+
   }
 
 var questions = [
@@ -126,15 +143,17 @@ function checkAnswer(questionIndex, selectedOptionIndex) {
       timeLeft -= 10;
     }
   }
-
+  currentQuestionIndex++
   // Move to the next question
-  displayQuestion(questionIndex + 1)
-  if (shuffledQuestions.length > currentQuestionIndex + 1) {
-  } else {
+    if (currentQuestionIndex < shuffledQuestions.length) {
+    displayQuestion(questionIndex + 1)
+    } else {
     endGame();
-    saveScore();
-  }
+    viewScore();
+   }
 }
+
+
 
 
 
@@ -146,15 +165,10 @@ function viewHighScores() {
   startButton.style.display = "none";
   restartButton.style.display = "block";
   clearStorageButton.style.display = "block";
+
 }
 
 showHighScoresButton.addEventListener("click", viewHighScores);
-
-
-localStorage.setItem("scores", JSON.stringify(timeLeft));
-
-var score = localStorage.getItem("scores");
-
 
 
 var clearButton = document.getElementById("clear-btn");
@@ -170,7 +184,32 @@ function resetPage() {
 restartButton.addEventListener("click", resetPage)
 
 
-var score = timeLeft;
-function saveScore () {
-  localStorage.setItem("scores", JSON.stringify(score));
+function viewScore () {
+  var score = timeLeft;
+  scoreContainer.style.display = "block";
+  scoreText.textContent = "Your score was " + score;
+  // localStorage.setItem("scores", JSON.stringify(score));
 }
+
+function scoreSubmit (event) {
+  event.preventDefault()
+  var initials = initialsText.value
+  alert(initials)
+}
+
+submitButton.addEventListener("click", scoreSubmit)
+
+
+
+var newScore = {
+  score: timeLeft,
+  initials: initials,
+};
+
+scores.push (newScore)
+
+localStorage.setItem("newScore")
+scoreContainer = JSON.parse(localStorage.getItem("newScore"));
+
+highScores.push({newScore})
+
