@@ -208,8 +208,5 @@ var newScore = {
 
 scores.push (newScore)
 
-localStorage.setItem("newScore")
-scoreContainer = JSON.parse(localStorage.getItem("newScore"));
-
-highScores.push({newScore})
-
+localStorage.setItem(newScore, initials)
+highScoresTable = JSON.parse(localStorage.getItem("score"));
